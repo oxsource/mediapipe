@@ -27,12 +27,11 @@ sdk: sdk/framework
 # 2. Build calculator_runner library
 # -----------------------------
 framework_lib:
-	@echo "=== Building calculator_runner libraries via Bazel ==="
-	bazel build -c opt //mediapipe/framework:calculator_runner
+	@echo "=== Building mediapipe_framework libraries via Bazel ==="
+	bazel build -c opt //mediapipe/framework:mediapipe_framework
 	@echo "Copying output libraries to SDK folder"
 	mkdir -p $(SDK_DIR)/lib
-	cp $(BAZEL_BIN)/mediapipe/framework/libcalculator_runner.a $(SDK_DIR)/lib/
-	cp $(BAZEL_BIN)/mediapipe/framework/libcalculator_runner.so $(SDK_DIR)/lib/
+	cp $(BAZEL_BIN)/mediapipe/framework/libmediapipe_framework.so $(SDK_DIR)/lib/
 
 # -----------------------------
 # 3. Clean

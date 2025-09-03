@@ -1981,3 +1981,43 @@ cc_library(
         "@com_google_absl//absl/strings:string_view",
     ],
 )
+
+cc_library(
+    name = "mediapipe_framework",
+    srcs = glob(
+        ["**/*.cc"],
+        exclude = [
+            "**/*_test.cc",
+            "**/test_*.cc",
+        ],
+    ),
+    hdrs = glob(["**/*.h"]),
+    visibility = [
+        "//visibility:public",
+    ],
+    deps = [
+        ":calculator_base",
+        ":calculator_context",
+        ":calculator_contract",
+        ":calculator_graph",
+        ":calculator_registry",
+        ":counter_factory",
+        ":input_stream",
+        ":output_side_packet",
+        ":output_stream",
+        ":packet",
+        ":packet_generator",
+        ":packet_generator_graph",
+        ":packet_set",
+        ":packet_type",
+        ":port",
+        ":status_handler",
+        ":subgraph",
+        ":timestamp",
+        ":validated_graph_config",
+        "//mediapipe/framework/tool:sink",
+        "//mediapipe/framework/tool:status_util",
+        "//mediapipe/framework/tool:validate",
+        "//mediapipe/framework/tool:validate_name",
+    ],
+)
