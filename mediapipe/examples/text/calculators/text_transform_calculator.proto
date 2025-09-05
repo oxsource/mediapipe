@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package mediapipe;
+
+import "mediapipe/framework/calculator.proto";
+
+message TextTransformCalculatorOptions {
+  extend mediapipe.CalculatorOptions {
+    optional TextTransformCalculatorOptions ext = 500000002;
+  }
+  optional bool lowercase = 1 [default = true];
+  optional string suffix = 2 [default = "_ext"];
+}
