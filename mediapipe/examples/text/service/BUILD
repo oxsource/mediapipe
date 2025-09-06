@@ -2,10 +2,11 @@ licenses(["notice"])
 
 package(default_visibility = ["//visibility:public"])
 
-#bazel run --define MEDIAPIPE_DISABLE_GPU=1 //mediapipe/examples/text:string_join
-cc_binary(
-    name = "string_join",
-    srcs = ["string_join.cc"],
+#bazel build --define MEDIAPIPE_DISABLE_GPU=1 //mediapipe/examples/text/service:text_service
+cc_library(
+    name = "text_service",
+    srcs = ["text_service.cc"],
+    hdrs = ["text_service.h"],
     deps = [
         "//mediapipe/examples/text/calculators:text_merge_calculator",
         "//mediapipe/examples/text/calculators:text_transform_calculator",
@@ -15,14 +16,5 @@ cc_binary(
         "@com_google_absl//absl/log:absl_check",
         "@com_google_absl//absl/log:absl_log",
         "@com_google_absl//absl/strings",
-    ],
-)
-
-#bazel run --define MEDIAPIPE_DISABLE_GPU=1 //mediapipe/examples/text:string_join_service
-cc_binary(
-    name = "string_join_service",
-    srcs = ["string_join_service.cc"],
-    deps = [
-        "//mediapipe/examples/text/service:text_service",
     ],
 )
