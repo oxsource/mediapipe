@@ -45,7 +45,6 @@ absl::Status RunTextTransformGraph() {
 
   MP_RETURN_IF_ERROR(graph.StartRun({}));
 
-  // 发送两路输入
   MP_RETURN_IF_ERROR(graph.AddPacketToInputStream(
       "in0", MakePacket<std::string>("Hello").At(Timestamp(0))));
   MP_RETURN_IF_ERROR(graph.AddPacketToInputStream(
